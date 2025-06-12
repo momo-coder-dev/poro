@@ -1,0 +1,89 @@
+<div class="p-6 max-w-5xl mx-auto space-y-10">
+
+  <% if @event.cover_image.attached? %>
+  <div class="w-full h-64 md:h-96 overflow-hidden">
+    <%= image_tag @event.cover_image, class: "w-full h-full object-cover" %>
+  </div>
+<% end %>
+
+
+  <!-- Section 1: Informations de l'Événement -->
+  <section class="bg-white p-6 rounded-xl shadow border">
+    <h2 class="text-2xl font-bold mb-4">📅 Informations sur l'événement</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <p><span class="font-semibold">Nom :</span> <%= @event.name %></p>
+      <p><span class="font-semibold">Code :</span> <%= @event.public_reference %></p>
+      <p><span class="font-semibold">Date :</span> <%= @event.start_at.strftime('%d/%m/%Y') %></p>
+      <p><span class="font-semibold">Heure :</span> <%= @event.start_at.strftime('%Hh%M') %></p>
+      <p><span class="font-semibold">Statut :</span> <%= @event.status %></p>
+      <p class="md:col-span-2"><span class="font-semibold">Description :</span> <%= @event.description %></p>
+    </div>
+  </section>
+
+  <!-- Section 2: Types de billets -->
+  <section class="bg-white p-6 rounded-xl shadow border">
+    <h2 class="text-2xl font-bold mb-4">🎟️ Types de billets</h2>
+    <table class="w-full text-sm table-auto border-collapse">
+      <thead class="bg-gray-50 text-left">
+        <tr>
+          <th class="border-b px-3 py-2">Nom</th>
+          <th class="border-b px-3 py-2">Prix</th>
+          <th class="border-b px-3 py-2">Quantité</th>
+          <th class="border-b px-3 py-2">Quantité vendue</th>
+          <th class="border-b px-3 py-2">Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event.ticket_types.each do |ticket| %>
+          <tr>
+            <td class="border-b px-3 py-2"><%= ticket.name %></td>
+            <td class="border-b px-3 py-2"><%= number_to_currency(ticket.price, unit: 'FCFA', format: "%n %u") %></td>
+            <td class="border-b px-3 py-2"><%= ticket.quantity %></td>
+            <td class="border-b px-3 py-2">44</td>
+            <td class="border-b px-3 py-2"><%= rand(0..1) ? 'Actif' : 'Inactif' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 3: Informations sur le lieu -->
+  <section class="bg-white p-6 rounded-xl shadow border">
+    <h2 class="text-2xl font-bold mb-4">📍 Lieu de l'événement</h2>
+    <% if @event.venue.present? %>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <p><span class="font-semibold">Nom du lieu :</span> <%= @event.venue.name %></p>
+        <p><span class="font-semibold">Adresse :</span> <%= @event.venue.address %></p>
+        <p><span class="font-semibold">Ville :</span> <%= @event.venue.city %></p>
+        <p><span class="font-semibold">Capacité :</span> 222 personnes</p>
+        <p><span class="font-semibold">Coordonnées GPS :</span> <%= @event.venue.gps_coordinates %></p>
+        <p><span class="font-semibold">Instructions :</span> instructions </p>
+      </div>
+    <% else %>
+      <p class="text-sm text-gray-500">Aucun lieu associé à cet événement.</p>
+    <% end %>
+  </section>
+
+
+  <!-- Section 3: Informations sur le lieu -->
+  <section class="bg-white p-6 rounded-xl shadow border">
+    <div class="flex">
+      <h2 class="text-2xl font-bold mb-4">📍 Tickets</h2>
+      <a href="<%= dashboard_event_tickets_path(@event) %>" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:text-white hover:bg-gray-700"> See All</a>
+    </div>
+
+    <%= render Blocks::ItemTableComponent.new(
+      items: @event.tickets,
+      headers: TicketsHelper::COLUMNS.values,
+      rows: TicketsHelper::COLUMNS.keys,
+      actions: TicketsHelper::ACTIONS,
+      scope: [:dashboard, :event],
+      pagy: @pagy
+    ) %> 
+  </section>
+
+
+</div>
+
+
+

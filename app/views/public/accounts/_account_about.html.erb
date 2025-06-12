@@ -1,0 +1,26 @@
+<!-- About Section -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+    <h2 class="text-lg font-semibold mb-4">About</h2>
+    <% if @account.description.present? %>
+    <p class="text-gray-600 mb-4"><%= @account.description %></p>
+    <% end %>
+    
+    <!-- Contact Information -->
+    <div class="space-y-3">
+
+    
+    <% if @account.website.present? %>
+        <div class="flex items-center text-gray-600">
+        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+        <a href="<%= @account.website %>" target="_blank" rel="noopener" class="hover:text-indigo-600">
+            <%= @account.website.gsub(/^https?:\/\//, '') %>
+        </a>
+        </div>
+    <% end %>
+    </div>
+
+    <!-- Social Links -->
+
+</div>

@@ -1,0 +1,14 @@
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4">Stay Updated</h2>
+    <p class="text-gray-600 text-lg mb-6">
+      Subscribe to our newsletter to receive updates about upcoming events and exclusive offers.
+    </p>
+    <%= form_with url: root_path, method: :post, local: true, class: "flex flex-col sm:flex-row gap-4 items-center justify-center" do |f| %>
+      <%= f.email_field :email, placeholder: "Enter your email", class: "w-full sm:w-2/3 px-5 py-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      <%= f.submit "Subscribe", class: "btn-secondary" %>
+    <% end %>
+  </div>
+</section>

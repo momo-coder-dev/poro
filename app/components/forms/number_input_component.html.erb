@@ -1,0 +1,5 @@
+<%= @form.number_field @field_name, { class: input_classes, placeholder: @placeholder}.merge({value: @default}.compact_blank) %>
+
+<% if has_errors? %>
+  <p class="mt-2 text-sm text-red-600"><%= @form.object.errors[@field_name].first %></p>
+<% end %>

@@ -1,0 +1,197 @@
+<div class="page-content">
+            
+            <div class="text-center py-3 mb-3 border-bottom">
+                <a href="javascript:void(0)" class="header-top-button p-2 rounded mr-3" data-toggle="modal" data-target="#purchase-code-help" title="Afficher votre QR code client"><i class="fa-solid fa-qrcode"></i></a>
+                <a href="/dashboard/notifications" class="header-top-button p-2 rounded mr-3" title="Voir vos notifications"><i class="fa-solid fa-bell"></i><span class="badge notif-counter">4</span></a>
+                <a href="https://tikerama.com/en" class="header-top-button p-2 rounded"><i class="fa-solid fa-home"></i><small> Retour à l'accueil <i class="fa-solid fa-angles-right"></i></small></a>
+            </div>
+                                                <div class="mb-3 ml-3">
+                <a href="https://tikerama.com/dashboard/notifications" class="text-secondary"><i class="fa-solid fa-angle-left"></i> Retour </a>
+            </div>
+            <div class="container dashboard-header">
+    <h1>Paramètres</h1>
+    <div class="breadcrumb-nav">
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="javascript:void(0)" class="active">Paramètres</a></li>
+        </ul>
+    </div>
+</div>
+<form id="modify-settings-form">
+    <div class="container mb-5">
+        <div class="row">
+            
+            <div class="col-12 mb-2 gray-bg-1 rounded">
+                <h3>Recette des ventes de tickets</h3>
+                <p>Lorsque vous organisez un événement, nous avons besoin de vos coordonnées pour vous envoyer les revenus de la vente des tickets.</p>
+            </div>
+            <div class="col-12">
+                <h4 class="add-left-border text-uppercase pl-2 my-3">Mobile money</h4>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>N° téléphone</label>
+                    <div class="iti iti--allow-dropdown iti--show-flags"><div class="iti__flag-container"><div class="iti__selected-flag" role="combobox" aria-haspopup="listbox" aria-controls="iti-0__country-listbox" aria-owns="iti-0__country-listbox" aria-expanded="false" aria-label="Telephone country code" tabindex="0" title="Côte d’Ivoire: +225"><div class="iti__flag iti__ci"></div><div class="iti__arrow"></div></div><ul class="iti__country-list iti__hide" id="iti-0__country-listbox" role="listbox" aria-label="List of countries"><li class="iti__country iti__standard iti__active" tabindex="-1" id="iti-0__item-ci" role="option" data-dial-code="225" data-country-code="ci" aria-selected="true"><div class="iti__flag-box"><div class="iti__flag iti__ci"></div></div><span class="iti__country-name">Côte d’Ivoire</span><span class="iti__dial-code">+225</span></li></ul></div><input id="phone-request-earnings" type="tel" name="phone" class="form-control" placeholder="" value="" minlength="10" maxlength="15" autocomplete="tel" data-intl-tel-input-id="0"><input type="hidden" name="phone-request-earnings"></div>
+                    <span id="phone-request-earnings-errorMessage" class="red-color"></span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-check mb-3">
+                    <input class="form-check-input cursor-pointer" type="radio" name="transfer-option" id="phone-number" value="phone-number" checked="">
+                    <label class="form-check-label cursor-pointer" for="phone-number">Choisir par défault</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <h4 class="add-left-border text-uppercase pl-2 my-3">Compte bancaire</h4>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>RIB</label>
+                    <input type="text" id="rib" name="rib" class="form-control" value="" minlength="20" maxlength="30" autocomplete="off">
+                    <span id="rib-errorMessage" class="red-color"></span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-check mb-3">
+                    <input class="form-check-input cursor-pointer" type="radio" name="transfer-option" id="bank-account" value="bank-account">
+                    <label class="form-check-label cursor-pointer" for="bank-account">Choisir par défault</label>
+                </div>
+            </div>
+            <div id="ribs" class="col-12 text-center">
+                <p id="ribs-errorMessage" class="red-color ribs-errorMessage"></p>
+            </div>
+            
+            <div class="col-12 mb-4 gray-bg-1">
+                <h3>Notifications</h3>
+                <p>Cochez la case si vous souhaitez recevoir une notification et/ou un e-mail dans les situations suivantes :</p>
+            </div>
+            <div class="col-md-6 mb-5 mb-md-0">
+                <h4>En tant que participant</h4>
+                                <div class="form-group">
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="ticket-has-been-transferred" id="ticket-has-been-transferred" checked="">
+                        <label class="form-check-label" for="ticket-has-been-transferred">Un utilisateur vient de vous transférer un ticket</label>
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="organizer-invited-you" id="organizer-invited-you" checked="">
+                        <label class="form-check-label" for="organizer-invited-you">Un organisateur vient de vous inviter à son événement</label>
+                    </div>
+                </div>
+                            </div>
+            <div class="col-md-6 mb-4">
+                <h4>En tant qu'organisateur</h4>
+                                <div class="form-group">
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="participant-bought-ticket" id="participant-bought-ticket" checked="">
+                        <label class="form-check-label" for="participant-bought-ticket">Un nouveau participant vient d'acheter</label>
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="participant-canceled-ticket" id="participant-canceled-ticket" checked="">
+                        <label class="form-check-label" for="participant-canceled-ticket">Un participant annule son ticket</label>
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="validator-logged-in" id="validator-logged-in" checked="">
+                        <label class="form-check-label" for="validator-logged-in">Un validateur vient de se connecter</label>
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="organizer-event-reminder" id="organizer-event-reminder" checked="">
+                        <label class="form-check-label" for="organizer-event-reminder">Rappel et infos utiles, 2 heures avant le début de l'événement</label>
+                    </div>
+                </div>
+                            </div>
+            
+            <div class="col-12 mb-2 gray-bg-1 rounded" id="parametres-avances">
+                <h3>Avancés</h3>
+                <p>Paramètres avancés de votre compte </p>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Authentificateur à 2 facteurs <i class="fa-solid fa-circle-question red-theme-color cursor-pointer" data-toggle="modal" data-target="#double-authentication-help"></i></label>
+                    <div class="custom-checkbox pl-4">
+                        <input class="form-check-input" type="checkbox" name="double-authentication" id="double-authentication" checked="">
+                        <label class="form-check-label" for="double-authentication">Activer la double authentification</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-5 text-center">
+                <p id="global-form-errorMessage" class="red-color phone-numbers-errorMessage ribs-errorMessage"></p>
+                <button id="submit-button" class="btn btn-theme text-uppercase">enregistrer <i class="fa-solid fa-gears"></i></button>
+            </div>
+            <div class="col-12 mt-5">
+                <a href="/gestion-compte/supprimer-compte" class="font-weight-bold pl-1"><u><i class="fas fa-trash-alt"></i> Supprimer votre compte</u></a>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="_token" value="YZjz3QrVS0P3u1kbuyCMxeh2OhpRTd37wGyw8B1c"></form>
+<div class="modal" id="double-authentication-help" tabindex="-1" role="dialog" aria-labelledby="double-authentication-help" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Double authentification</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>La double authentification offre une couche de sécurité supplémentaire lors de la connexion à votre compte.</p>
+                <p>Une fois activée, lors de toute nouvelle connexion ou si une connexion est jugée suspecte :</p>
+                <ul class="ml-2">
+                    <li class="mb-2">- Un code sera envoyé à votre adresse e-mail</li>
+                    <li class="mb-2">- Vous devrez saisir ce code pour finaliser la connexion</li>
+                </ul>
+                <p><i class="fa-solid fa-circle-check green-color"></i> <b>Il est donc fortement recommandé de garder cette fonctionnalité activée pour renforcer la sécurité de votre compte.</b></p>
+            </div>
+            <div class="modal-footer mx-auto">
+                <button type="button" class="btn btn-theme text-uppercase" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="modal" id="purchase-code-help" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Votre code client</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">Faites scanner ce QR code chez un distributeur pour finaliser vos paiements.</p>
+                            <div class="visible-print text-center mb-2">
+                                <!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="200" viewBox="0 0 200 200"><rect x="0" y="0" width="200" height="200" fill="#ffffff"></rect><g transform="scale(9.524)"><g transform="translate(0,0)"><path fill-rule="evenodd" d="M8 0L8 1L9 1L9 4L10 4L10 5L11 5L11 6L10 6L10 7L9 7L9 6L8 6L8 8L9 8L9 9L8 9L8 10L6 10L6 9L7 9L7 8L6 8L6 9L5 9L5 8L3 8L3 9L2 9L2 8L0 8L0 12L1 12L1 11L2 11L2 13L3 13L3 12L4 12L4 13L7 13L7 12L8 12L8 14L9 14L9 16L8 16L8 18L10 18L10 19L8 19L8 21L9 21L9 20L10 20L10 21L12 21L12 20L11 20L11 18L13 18L13 16L14 16L14 17L16 17L16 18L17 18L17 19L16 19L16 20L17 20L17 19L18 19L18 21L20 21L20 20L21 20L21 18L19 18L19 17L16 17L16 16L17 16L17 14L16 14L16 13L15 13L15 12L14 12L14 13L15 13L15 14L13 14L13 13L11 13L11 12L12 12L12 11L10 11L10 10L11 10L11 8L12 8L12 10L13 10L13 11L15 11L15 8L14 8L14 10L13 10L13 4L12 4L12 3L11 3L11 2L12 2L12 1L13 1L13 0ZM10 1L10 2L11 2L11 1ZM11 4L11 5L12 5L12 4ZM11 6L11 7L12 7L12 6ZM20 8L20 9L18 9L18 10L17 10L17 9L16 9L16 11L17 11L17 12L18 12L18 13L20 13L20 14L18 14L18 16L19 16L19 15L20 15L20 14L21 14L21 12L20 12L20 11L21 11L21 8ZM1 9L1 10L2 10L2 9ZM3 9L3 10L4 10L4 9ZM8 10L8 11L9 11L9 12L10 12L10 11L9 11L9 10ZM4 11L4 12L5 12L5 11ZM6 11L6 12L7 12L7 11ZM18 11L18 12L19 12L19 11ZM9 13L9 14L10 14L10 15L12 15L12 14L10 14L10 13ZM14 15L14 16L15 16L15 15ZM10 16L10 18L11 18L11 16ZM20 16L20 17L21 17L21 16ZM14 18L14 19L13 19L13 20L15 20L15 18ZM19 19L19 20L20 20L20 19ZM0 0L0 7L7 7L7 0ZM1 1L1 6L6 6L6 1ZM2 2L2 5L5 5L5 2ZM14 0L14 7L21 7L21 0ZM15 1L15 6L20 6L20 1ZM16 2L16 5L19 5L19 2ZM0 14L0 21L7 21L7 14ZM1 15L1 20L6 20L6 15ZM2 16L2 19L5 19L5 16Z" fill="#000000"></path></g></g></svg>
+
+                            </div>
+                            <p class="text-center">Une fois chez un distributeur dans un point de vente physique, <b>vous pouvez par exemple payer en espèces.</b></p>
+                            <p>
+                            </p><ul>
+                                <li class="mb-2">- Pour cela, le distributeur utilise votre code client (<b>27703806</b>) vous identifiant de manière unique.</li>
+                                <li>- Après l'achat, les tickets commandés vous sont envoyés par e-mail, mais également stocké en toute sécurité dans votre compte.</li>
+                            </ul>
+                            <p></p>
+                            <p class="text-center"><b>Ni le distributeur ni personne d'autre n'a accès à vos tickets.</b></p>
+                        </div>
+                        <div class="modal-footer mx-auto">
+                            <button type="button" class="btn btn-theme text-uppercase" data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="back-to-top" class="cursor-pointer py-1 px-2" style="right: -200%;">
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
+            <div class="text-center my-2">
+                <img class="img-fluid footer-logo" src="/assets/img/brand/logo-tikerama.png" alt="TIKERAMA, N°1 de la billetterie événementielle en Côte d'Ivoire. Acheter et vendre des tickets d'événements n'a jamais été aussi facile.">
+                <p class="h5 d-inline">v1.1.0</p>
+            </div>
+        </div>

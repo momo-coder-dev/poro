@@ -1,0 +1,4 @@
+<div class="mb-0 field">
+  <%= form.label @field_name, @label, class: "label" %>
+  <%= render("Forms::#{@field_type.to_s.classify}InputComponent".constantize.new(form: form, field_name: @field_name, options: @field_data, placeholder: @placeholder)) %>
+</div>

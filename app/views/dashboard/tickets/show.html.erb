@@ -1,0 +1,1 @@
+<%= image_tag RQRCode::QRCode.new(@ticket.qr_content).as_png(size: 300).to_data_url, alt: "QR Code" %>

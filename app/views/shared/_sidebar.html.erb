@@ -1,0 +1,73 @@
+<div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+  <div class="flex flex-col flex-grow bg-gray-800 pt-5 pb-4 overflow-y-auto">
+    <div class="flex items-center flex-shrink-0 px-4">
+      <h1 class="text-white text-xl font-bold">Tikety</h1>
+    </div>
+    <nav class="mt-5 flex-1 flex flex-col divide-y divide-gray-700 overflow-y-auto" aria-label="Sidebar">
+      <div class="px-1 space-y-1">
+        <!-- Dashboard -->
+        <a href="<%= dashboard_root_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/home') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Dashboard
+        </a>
+
+        <!-- Create Event -->
+        <a href="<%= new_dashboard_event_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/events') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Créer un événement
+        </a>
+
+        <!-- Upcoming Events -->
+        <a href="<%= dashboard_events_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/events') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Upcoming Events
+        </a>
+
+        <!-- Past Events -->
+        <a href="<%= dashboard_events_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/events') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Past Events
+        </a>
+
+        <!-- Profile -->
+        <a href="<%= dashboard_events_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/home') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Profil
+        </a>
+
+        <!-- Settings -->
+        <a href="<%= dashboard_settings_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/settings') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Settings
+        </a>
+
+        <!-- Orders -->
+        <a href="<%= dashboard_orders_path %>" 
+           class="group flex items-center px-2 py-2 text-sm font-medium rounded-md
+           <%= 'text-white bg-gray-700' if current_page?(controller: 'dashboard/orders') %>
+           text-gray-300 hover:text-white hover:bg-gray-700">
+          <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" ...>...</svg>
+          Orders
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>

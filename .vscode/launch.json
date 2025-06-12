@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "rdbg",
+        "name": "Run",
+        "request": "launch",
+        "script": "./bin/rails s && ./bin/rails tailwindcss:watch",
+        "useBundler": false,
+        "command": "ruby"
+      },
+      {
+        "type": "rdbg",
+        "name": "Attach with rdbg",
+        "request": "attach"
+      },
+      {
+        "type": "rdbg",
+        "name": "Rspec",
+        "request": "launch",
+        "command": "bundle exec rspec",
+        "script": "${relativeFile}",
+        "args": [],
+        "askParameters": true,
+        "useTerminal": true
+      },
+    ]
+  }
+  

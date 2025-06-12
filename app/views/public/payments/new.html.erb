@@ -1,0 +1,21 @@
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Title -->
+  <h1 class="text-3xl font-bold text-gray-900 border-b-4 border-red-500 pb-4 mb-8">Paiement de la commande</h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Left Column: Poster + Résumé -->
+    <div class="space-y-4 lg:col-span-1">
+      <!-- Event Poster -->
+      <div class="rounded-xl overflow-hidden shadow-lg">
+        <img src="<%= url_for(@event.cover_image) %>" alt="Affiche de l'événement" class="w-full object-cover max-h-100">
+      </div>
+
+     <%= render 'resume', event: @event, order: @order %>
+    </div>
+
+    <!-- Middle + Right: Form -->
+    <div class="lg:col-span-2">
+      <%= render 'form', payment: @payment, token: @token %>
+    </div>
+  </div>
+</div>

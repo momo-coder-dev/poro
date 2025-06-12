@@ -1,0 +1,22 @@
+      <!-- Résumé -->
+      <div class="bg-gray-50 p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold text-gray-900 mb-3"><%= event.name %></h2>
+        <div class="text-sm text-gray-600 space-y-1">
+          <p>📅 sam. 17 mai 2025 à 12h00 GMT+1</p>
+          <p>📍 Abidjan</p>
+        </div>
+
+        <div class="border-t border-gray-300 pt-3 mt-3">
+          <h3 class="text-md font-bold text-gray-800 mb-2">Résumé</h3>
+          <% order.order_items.each do |ot| %>
+            <div class="flex justify-between text-sm mb-1">
+              <span><%= ot.quantity %> x <%= ot.ticket_type.name %></span>
+              <span><%= ot.total_price %> F CFA</span>
+            </div>
+          <% end %>
+          <div class="flex justify-between font-semibold text-md border-t pt-2 mt-2">
+            <span>Total</span>
+            <span><%= order.total_amount %> F CFA</span>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,12 @@
+<%= form.file_field @field_name,
+  class: "input block rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full",
+  "data-controller": "image-preview",
+  "required": @required,
+  "data-image-preview-url-value": @form.object.persisted? && @form.object.send(@field_name.to_sym).attached? ? url_for(@form.object.send(@field_name.to_sym)) : nil,
+  "data-action": "image-preview#change",
+  accept: "image/*"
+%>
+
+<% if has_errors? %>
+  <p class="mt-2 text-sm text-red-600"><%= @form.object.errors[@field_name].first %></p>
+<% end %>

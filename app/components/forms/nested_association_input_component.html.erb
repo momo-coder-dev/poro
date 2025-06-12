@@ -1,0 +1,68 @@
+<div data-controller="nested-records" class="my-8">
+  <div data-nested-records-target="container">
+    <% form.fields_for @field_name do |nested_form| %>
+      <div class="nestedRecord">
+        <% @fields.each do |nested_field_name, nested_field_settings| %>
+          <%= render Forms::FieldComponent.new(
+                form: nested_form,
+                placeholder: nested_field_settings[:placeholder],
+                field_name: nested_field_name.to_s,
+                label: nested_field_name.to_s.humanize,
+                field_type: nested_field_settings[:type],
+                field_data: nested_field_settings[:options]
+              ) %>
+        <% end %>
+        <div class="field mb-4">
+          <span>Delete</span>
+          <%= nested_form.check_box :_destroy %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if has_many_association? %>
+    <button data-action="click->nested-records#addNewRecord">Add</button>
+  <% end %>
+
+  <script type="html/template" data-nested-records-target="newRecordTemplate">
+    <% if has_many_association? %>
+      <%= form.fields_for "#{@field_name}_attributes", @model.new, index: 'NEW_RECORD' do |nested_form| %>
+        <div class="nestedRecord">
+          <% @fields.each do |nested_field_name, nested_field_settings| %>
+            <%= render Forms::FieldComponent.new(
+                  form: nested_form,
+                  placeholder: nested_field_settings[:placeholder],
+                  field_name: nested_field_name.to_s,
+                  label: nested_field_name.to_s.humanize,
+                  field_type: nested_field_settings[:type],
+                  field_data: nested_field_settings[:options]
+                ) %>
+          <% end %>
+          <div class="field mb-4">
+            <span>Delete</span>
+            <%= nested_form.check_box :_destroy %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form.fields_for "#{@field_name}_attributes", @model.new do |nested_form| %>
+        <div class="nestedRecord">
+          <% @fields.each do |nested_field_name, nested_field_settings| %>
+            <%= render Forms::FieldComponent.new(
+                  form: nested_form,
+                  placeholder: nested_field_settings[:placeholder],
+                  field_name: nested_field_name.to_s,
+                  label: nested_field_name.to_s.humanize,
+                  field_type: nested_field_settings[:type],
+                  field_data: nested_field_settings[:options]
+                ) %>
+          <% end %>
+          <div class="field mb-4">
+            <span>Delete</span>
+            <%= nested_form.check_box :_destroy %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </script>
+</div>

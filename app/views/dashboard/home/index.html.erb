@@ -1,0 +1,54 @@
+<div class="py-6">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+    <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+    <!-- Stats -->
+    <div class="mt-8">
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Events Card -->
+        <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+          <dt class="truncate text-sm font-medium text-gray-500">Total Events</dt>
+          <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900"><%= @events.count %></dd>
+        </div>
+
+        <!-- Tickets Card -->
+        <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+          <dt class="truncate text-sm font-medium text-gray-500">Total Tickets</dt>
+          <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900"><%= @tickets.count %></dd>
+        </div>
+
+        <!-- Buyers Card -->
+        <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+          <dt class="truncate text-sm font-medium text-gray-500">Total Buyers</dt>
+          <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">344</dd>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Events -->
+    <div class="mt-8">
+      <h2 class="text-lg font-medium text-gray-900">Recent Events</h2>
+      <div class="mt-4 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Tickets</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 bg-white">
+            <% @events.each do |event| %>
+              <tr>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= event.name %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= event.start_at %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= event.tickets.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,36 @@
+<div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+  <% @events.each do |event| %>
+    <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ">
+      <% if event.cover_image.attached? %>
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-lg bg-gray-200">
+          <%= image_tag event.cover_image, class: "h-48 w-full object-cover object-center card-img-top" %>
+        </div>
+      <% end %>
+      
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+            <%= event.category.titleize %>
+          </span>
+          <span class="text-sm text-gray-500">
+            <%= event.formatted_date %>
+          </span>
+        </div>
+
+        <h3 class="text-lg font-semibold text-gray-900 mb-1">
+          <%= link_to event.name, event_path(event), class: "hover:text-indigo-600" %>
+        </h3>
+
+        <div class="flex items-center text-sm text-gray-500 mb-3">
+          <i class="fa-solid fa-location-dot mr-2"></i>
+          <%= event.venue_name %>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium text-gray-900"> From <%= event.min_ticket_price %> </span>
+          <%= link_to "Get Tickets", event_path(event) + "#tickets", class: "btn-primary" %>
+        </div>
+      </div>
+    </div> 
+  <% end %>
+</div>
