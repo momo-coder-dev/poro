@@ -1,0 +1,36 @@
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+    <div class="mb-6">
+      <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+        <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="mt-3 text-2xl font-bold text-gray-900">Thank you for your purchase!</h1>
+      <p class="mt-2 text-gray-600">Your tickets have been sent to your email.</p>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-6 text-left">
+      <h2 class="text-lg font-semibold mb-4">Order Details</h2>
+      <div class="space-y-3">
+        <p><strong>Order Reference:</strong> <%= @order.reference %></p>
+        <p><strong>Event:</strong> <%= @order.event.name %></p>
+        <p><strong>Date:</strong> <%= @order.event.start_at %></p>
+        
+        <div class="border-t pt-3 mt-3">
+          <h3 class="font-semibold mb-2">Tickets:</h3>
+          <% @order.tickets.group_by(&:ticket_type).each do |ticket_type, tickets| %>
+            <div class="flex justify-between">
+              <p><%= ticket_type.name %></p>
+              <p><%= pluralize(tickets.count, 'ticket') %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-x-4">
+      <%= link_to "Browse More Events", events_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" %>
+    </div>
+  </div>
+</div> 

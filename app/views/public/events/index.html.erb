@@ -1,0 +1,22 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Upcoming Events</h1>
+    <p class="text-lg text-gray-600">Discover amazing events happening near you</p>
+  </div>
+
+  <%= render Blocks::EventsFilterComponent.new(
+    categories: @categories,
+    venues: @venues,
+    params: params
+  ) %>
+
+  <%= render Blocks::EventsCardComponent.new(events: @events) %>
+
+  <% if @events.empty? %>
+    <%= render Blocks::ItemEmptyComponent.new(
+      title: "No events found",
+      description: "Try adjusting your filters to find more events."
+    ) %>
+  <% end %>
+
+</div> 

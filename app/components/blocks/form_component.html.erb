@@ -1,0 +1,11 @@
+<div class="form_style md:!max-w-[800px] m-auto">
+  <%= form_with(model: @item, class: "grid grid-cols-1  gap-4 items-end") do |form| %>
+    <% @fields.each do |field_name, field_data| %>
+      <%= render Forms::FieldComponent.new(form: form, placeholder: field_data[:placeholder], field_name: field_name, label: field_data[:label].presence || field_name, field_type: field_data[:type], field_data: field_data[:options]) %>
+    <% end %>
+
+    <div class="text-right pt-4 border-t">
+      <%= form.submit @submit_text, class: "px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition" %>
+    </div>
+  <% end %>
+</div>

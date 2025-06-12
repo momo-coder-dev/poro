@@ -1,0 +1,12 @@
+<!-- Upcoming Events Section -->
+<section class="py-16 bg-gray-100">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Upcoming Events</h2>
+    <div class="row g-4">
+      <%= render Blocks::EventsCardComponent.new(events: @events) %>
+    </div>
+    <div class="text-center mt-8">
+      <%= link_to "View All Events", events_path, class: "btn-tertiary" %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+  <%= @form.select @field_name, @collection,
+   { include_blank: @prompt, multiple: @multiple}.merge({selected: @default }.compact_blank),
+  { class: input_classes + [' py-0'], data: { controller: "slim-select" } } %>
+
+  <% if has_errors? %>
+    <p class="mt-2 text-sm text-red-600"><%= @object.errors[@field_name].first %></p>
+  <% end %>

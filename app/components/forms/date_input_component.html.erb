@@ -1,0 +1,6 @@
+
+<%= form.date_field @field_name, placeholder: @placeholder, class: "input w-full px-4 py-2 border rounded-xl", data: { controller: "date-picker", date_picker_enable_time_value: @enable_time, date_picker_enable_seconds_value: @enable_seconds, date_picker_min_date_value: @min_date } %>
+
+<% if has_errors? %>
+  <p class="mt-2 text-sm text-red-600"><%= @form.object.errors[@field_name].first %></p>
+<% end %>

@@ -1,0 +1,77 @@
+<%= form_with(model: [:dashboard, event], local: true, class: "max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow space-y-10") do |form| %>
+
+  <!-- ① Infos Générales -->
+  <div>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">① Infos Générales</h2>
+
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "name", field_name: :name, label: "Nom", field_type: "text", field_data: {}) %>
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Description", field_name: :description, label: "Description", field_type: "text_area", field_data: {}) %>
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Image de couverture", field_name: :cover_image, label: "Image de couverture", field_type: "image", field_data: {}) %>
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Catégorie", field_name: :category, label: "Catégorie", field_type: "select", field_data: {collection: Event.categories.keys.map { |category| [category.humanize, category] }}) %>
+
+  </div>
+
+  <!-- ② Dates Heures -->
+  <div>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">② Dates Heures</h2>
+
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Date de début", field_name: :start_at, label: "Date de début", field_type: "date", field_data: { enable_time: true, enable_seconds: true, min_date: Date.today }) %>
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Date de fin", field_name: :end_at, label: "Date de fin", field_type: "date", field_data: { enable_time: true, enable_seconds: true, min_date: Date.today }) %>
+
+  </div>
+
+  <!-- ③ Lieu -->
+  <div>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">③ Lieu</h2>
+
+    <%= render Forms::NestedAssociationInputComponent.new(
+      form: form,
+      field_name: :venue, 
+      options: {
+        model: Venue,
+        fields: {
+          name: { type: :text, placeholder: "Nom du lieu", },
+          address: { type: :text, placeholder: "Adresse" },
+          longitude: { type: :text, placeholder: "Longitude" },
+          latitude: { type: :text, placeholder: "Latitude" }
+        }
+      }
+    ) %>
+
+  </div>
+
+  <!-- ④ Billets -->
+  <div>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">④ Billets</h2>
+
+    <%= render Forms::NestedAssociationInputComponent.new(
+      form: form,
+      field_name: :ticket_types, 
+      options: {
+        model: TicketType,
+        fields: {
+          name: { type: :text, placeholder: "Nom du billet" },
+          price: { type: :number, placeholder: "Prix" },
+          quantity: { type: :number, placeholder: "Quantité" }
+        }
+      }
+    ) %>
+
+  </div>
+
+
+  <!-- ⑤ Visibilité -->
+  <div>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">⑤ Visibilité</h2>
+
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Statut", field_name: :status, label: "Statut", field_type: "select", field_data: {collection: Event.statuses.keys.map { |status| [status.humanize, status] }}) %>
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Public ou privé", field_name: :access_visibility, label: "Public ou privé", field_type: "select", field_data: {collection: Event.access_visibilities.keys.map { |access_visibility| [access_visibility.humanize, access_visibility] }}) %>
+    <%= render Forms::FieldComponent.new(form: form, placeholder: "Gestion d’accès (invités, tenue...)", field_name: :entry_requirement, label: "Gestion d’accès (invités, tenue...)", field_type: "text_area", field_data: {}) %>
+
+  </div>
+
+  <!-- Bouton de soumission -->
+  <div class="text-right pt-4 border-t">
+    <%= form.submit event.new_record? ? "Créer l’événement" : "Mettre à jour", class: "px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition" %>
+  </div>
+<% end %>

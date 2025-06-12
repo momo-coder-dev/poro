@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0284c7;
+  --color-primary-50:  #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7; /* main */
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+
+}
+
+
+@layer base {
+  body {
+    @apply font-sans text-[#333333];
+  }
+}
+
+@layer components {
+  .navbar {
+    @apply bg-white shadow-md;
+  }
+
+  .navbar-brand {
+    @apply text-sky-600 font-bold text-2xl flex items-center gap-2;
+  }
+
+
+  .logo {
+    @apply h-10 w-auto;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg text-white bg-primary-600 hover:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply  px-4 py-2 rounded border border-primary-600 text-primary-600  hover:bg-primary-50;
+  }
+
+  .btn-tertiary{
+    @apply px-4 py-2 rounded text-primary-600 hover:underline;
+  }
+
+  .hero-section {
+    @apply text-white py-16;
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }
+
+  .feature-card {
+    @apply rounded-lg shadow-md transition-transform duration-300 ease-in-out;
+  }
+
+  .feature-card:hover {
+    @apply -translate-y-1.5;
+  }
+
+  .feature-icon {
+    @apply text-sky-600 text-[2.5rem] mb-4;
+  }
+
+  .card {
+    @apply shadow-md transition-transform duration-300 ease-in-out;
+  }
+
+  .card:hover {
+    @apply -translate-y-1.5;
+  }
+
+  .btn-outline-primary {
+    @apply text-sky-600 border border-sky-600;
+  }
+
+  .btn-outline-primary:hover {
+    @apply bg-sky-600 border-sky-600 text-white;
+  }
+
+  .btn-outline-light:hover {
+    @apply bg-white text-sky-600;
+  }
+
+  .field_with_errors .input {
+    @apply !border-red-500;
+  }
+  
+  .field_with_errors .input:focus {
+    border-color: initial !important;
+  }
+}

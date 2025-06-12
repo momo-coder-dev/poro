@@ -1,0 +1,69 @@
+<%= form_with(url: @url, method: :get) do |form| %>
+  <div data-controller="item-filter" class="shadow-md rounded-lg p-2 my-4 bg-white">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-1 flex-wrap">
+        <% @main_fields.each do |field_name, field_options| %>
+          <div class="my-2 px-2 ">
+           <%= render "Forms::#{field_options[:type].to_s.split("_").map(&:capitalize).join}InputComponent".constantize.new(
+            form: form,
+            field_name: field_name,
+            placeholder: field_options[:placeholder],
+            options: field_options[:options], class_string: 'input w-full sm:w-auto', default: params[field_name.to_sym]
+            ) %>
+          </div>
+        <% end %>
+
+        <button class="h-[35px] rounded-[8px] border text-white bg-[#AAC32E] flex items-center space-x-2 text-left px-4 py-2 shadow w-full sm:w-auto">
+          <%= render "shared_svg/search" %>
+          <span class="text-white">Rechercher</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <select class="text-sm text-gray-400 italic rounded-xl border border-gray-300 hover:border-gray-400 pr-4" data-action="change->item-table#changePageLimit">
+          <% ['10', '25', '50', '100'].each do |page_size| %>
+            <option value="<%= page_size %>" <%= 'selected' if params[:items].to_i == page_size.to_i %>><%= page_size %></option>
+          <% end %>
+        </select>
+
+        <% if may_export? %>
+          <%= render 'shared/financial/export_button', export: @export_options %>
+        <% end %>
+
+        <% unless @secondary_fields.empty? %>
+          <button 
+            type="button" name="button" 
+            class="filter-btn" 
+            id="filter-submit-btn"           
+            data-action="click->item-table#toggleSecondaryFields"
+            data-item-table-target="filterButton">
+            <%= render 'shared_svg/filter_fill', class: 'text-[#FF9500] hover:text-white' %>
+          </button>
+        <% end %>
+
+        
+      </div>
+    </div>
+
+    <div 
+      data-item-table-target="filterSecondaryFields"
+      class=" flex justify-center hidden bg-gray-300 ">
+      <% @secondary_fields.each do |field_name, field_options| %>
+        <div class="my-2 w-full px-2">
+        <%= render "Forms::#{field_options[:type].to_s.split("_").map(&:capitalize).join}InputComponent".constantize.new(
+          form: form,
+          field_name: field_name,
+          placeholder: field_options[:placeholder],
+          options: field_options[:options], class_string: 'input w-full sm:w-auto', default: params[field_name.to_sym]
+          ) %>
+        </div>
+      <% end %>
+
+      <div class="my-2 w-full flex justify-start items-end px-2 max-w-[200px]">
+        <button class="h-[35px] rounded-[8px] border text-white bg-[#AAC32E] flex items-center space-x-2 text-left px-4 py-2 shadow w-full sm:w-auto">
+          <span class="text-white">Rechercher</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

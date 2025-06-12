@@ -1,0 +1,9 @@
+<!-- Event Description -->
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+  <div>
+    <h2 class="text-2xl font-bold mb-4">About This Event <%= link_to 'GET TICKETS', "#tickets", class: "btn-primary text-sm lg:hidden" %></h2> 
+    <div class="prose max-w-none">
+      <%= @event.description %>
+    </div>
+  </div>
+</div>

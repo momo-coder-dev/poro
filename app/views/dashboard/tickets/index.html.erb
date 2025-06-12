@@ -1,0 +1,12 @@
+<div class="md:flex md:items-center md:justify-between">
+  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Tickets</h2>
+</div>
+
+<%= render Blocks::ItemTableComponent.new(
+  items: @tickets,
+  headers: TicketsHelper::COLUMNS.values,
+  rows: TicketsHelper::COLUMNS.keys,
+  actions: TicketsHelper::ACTIONS,
+  scope: [:dashboard, :event],
+  pagy: @pagy
+) %> 

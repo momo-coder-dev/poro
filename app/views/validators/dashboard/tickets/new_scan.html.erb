@@ -1,0 +1,30 @@
+<%= content_for :head do %>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<% end %>
+<div class="container mx-auto px-4 py-8" data-controller="ticket-scanner">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-2xl font-bold mb-6">Scan Ticket</h1>
+
+    <div class="bg-white rounded-lg shadow p-6">
+      <div >
+        <div id="reader" class="w-full max-w-md mx-auto"></div>
+        
+        <div class="mt-4 text-center">
+          <p class="text-gray-600">Position the QR code within the frame to scan</p>
+          <p id="scan-result"></p>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="text-lg font-semibold mb-4">Manual Search</h2>
+        <%= form_tag validators_dashboard_ticket_path, method: :get, data:{"ticket-scanner-target": 'form'} ,class: "flex gap-4" do %>
+          <%= text_field_tag :reference, nil, 
+              placeholder: "Enter ticket reference", data: {"ticket-scanner-target": 'searchInput'},
+              class: "flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+          <%= submit_tag "Search", 
+              class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
