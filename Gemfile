@@ -24,7 +24,7 @@ gem "rqrcode"
 gem "draper", "~> 4.0", ">= 4.0.4"
 gem "pagy", "~> 9.1"
 gem "pundit", "~> 2.5"
-gem "view_component", "~> 3.8"
+gem "view_component", "~> 3.23"
 gem "pg_search", "~> 2.3", ">= 2.3.6"
 gem "faker", "~> 3.0", ">= 3.0.2"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
